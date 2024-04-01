@@ -2,8 +2,6 @@
 
 Submitted by: **Nelson Wang**
 
-**Trivia Game** is an app that ... [TODO] 
-
 Time spent: **20** hours spent in total
 
 ## Required Features
