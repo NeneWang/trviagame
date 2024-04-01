@@ -39,6 +39,8 @@ Here is a reminder on how to embed Loom videos on GitHub. Feel free to remove th
 
 ## Group Project Submission
 
+https://hackmd.io/mHxs6V4bTv2cgm3l15TsJA?both
+
 ## Nelson
 
 ### Digital Planner/Minimalistic Journal/Task Tracking App
