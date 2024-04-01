@@ -10,6 +10,7 @@ import SwiftUI
 struct AnswerRow: View {
     var answer: Answer
     @State private var isSelected = false
+    @EnvironmentObject var triviaManager: TriviaManager
     
     var body: some View {
         HStack(spacing: 20){
@@ -25,8 +26,12 @@ struct AnswerRow: View {
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
         .background(.white)
         .cornerRadius(10)
-        .shadow(color: isSelected ? answer.isCorrect ? .green : .red : .gray , radius: 5, x: 0.5, y: 0.5)
+        .shadow(color: triviaManager.answerSelected ? answer.isCorrect ? .green : .red : .gray , radius: 5, x: 0.5, y: 0.5)
         .onTapGesture{
+            if !triviaManager.answerSelected{
+                isSelected = true
+                triviaManager.selectAnswer(answer: answer)
+            }
             isSelected = true
         }
     }
@@ -36,5 +41,5 @@ struct AnswerRow: View {
     AnswerRow(answer: Answer(
         text: "Single",
         isCorrect: false
-    ))
+    )).environmentObject(TriviaManager())
 }

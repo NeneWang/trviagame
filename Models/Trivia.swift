@@ -8,18 +8,27 @@
 import Foundation
 
 struct Trivia: Decodable{
+    
+    let responseCode: Int
     var results: [Result]
     
     struct Result: Decodable, Identifiable{
         var id: UUID {
             UUID()
         }
-        var category: String
-        var type: String
-        var difficulty: String
-        var question: String
-        var correctAnswer: String
-        var incorrectAnswer: [String]
+//        var category: String
+//        var type: String
+//        var difficulty: String
+//        var question: String
+//        var correctAnswer: String
+//        var incorrectAnswer: [String]
+        
+        let type: String
+        let difficulty: String
+        let category: String
+        let question: String
+        let correctAnswer: String
+        let incorrectAnswers: [String]
         
         var formattedQuestion: AttributedString{
             do{
@@ -36,7 +45,7 @@ struct Trivia: Decodable{
                 Answer(
                     text: try AttributedString(markdown: correctAnswer), isCorrect: true)
                 ]
-                let incorrects = try incorrectAnswer.map{
+                let incorrects = try incorrectAnswers.map{
                     answer in Answer(
                         text: try AttributedString(markdown: answer), isCorrect: false)
                     
